@@ -59,7 +59,7 @@ net-wait-go
         tcp (default "tcp")
 ```
 
-## 1 address check
+## 1 service check
 ```bash
 net-wait-go -addrs ya.ru:443 -debug true
 2020/06/30 18:07:38 ya.ru:443 is OK
@@ -67,7 +67,7 @@ net-wait-go -addrs ya.ru:443 -debug true
 return code is 0
 ```
 
-## 2 addresses check
+## 2 services check
 ```bash
 net-wait-go -addrs ya.ru:443,yandex.ru:443 -debug true
 2020/06/30 18:09:24 yandex.ru:443 is OK
@@ -76,7 +76,7 @@ net-wait-go -addrs ya.ru:443,yandex.ru:443 -debug true
 return code is 0
 ```
 
-## 2 addresses check fail
+## 2 service check (fail)
 ```bash
 net-wait-go -addrs ya.ru:445,yandex.ru:445 -debug true
 2020/06/30 18:09:24 yandex.ru:443 is FAILED
