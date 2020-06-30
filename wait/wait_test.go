@@ -3,7 +3,6 @@ package wait
 import (
 	"net"
 	"testing"
-	"time"
 )
 
 func getServer(addr string) net.Listener {
@@ -31,11 +30,12 @@ func TestTCP(t *testing.T) {
 	srv := getServer(ok)
 	defer srv.Close()
 
-	if !Do("tcp", []string{ok}, time.Millisecond*100, time.Second, true) {
+	e := New(WithDebug(true))
+	if !e.Do([]string{ok}) {
 		t.FailNow()
 	}
 
-	if Do("tcp", []string{notok}, time.Millisecond*100, time.Second, true) {
+	if e.Do([]string{notok}) {
 		t.FailNow()
 	}
 }

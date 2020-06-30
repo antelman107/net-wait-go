@@ -16,16 +16,27 @@ But also this package can be donwloaded as utility and used from command line.
 
 # Library usage
 
+## Simple
 ```GO
 import "github.com/antelman107/net-wait-go/wait"
 
-if !wait.Do(
-    "tcp",                     // proto
-    []string{"postgres:5432"}, // addresses
-    time.Millisecond*100,      // delay between requests
-    time.Second*15,            // deadline
-    true,                      // debug 
-) {
+if !wait.New().Do([]string{"postgres:5432"}) {
+    logger.Error("db is not available")
+    return
+}
+```
+
+## All optional settings definition
+```GO
+import "github.com/antelman107/net-wait-go/wait"
+
+if !wait.New(
+      wait.WithProto("tcp"),
+      wait.WithWait(200*time.Millisecond),
+      wait.WithBreak(50*time.Millisecond),
+      wait.WithDeadline(15*time.Second),
+      wait.WithDebug(true),
+).Do([]string{"postgres:5432"}) {
     logger.Error("db is not available")
     return
 }
@@ -34,6 +45,8 @@ if !wait.Do(
 # Utility usage
 
 ```bash
+net-wait-go
+
   -addrs string
         address:port
   -deadline uint
@@ -50,6 +63,8 @@ if !wait.Do(
 ```bash
 net-wait-go -addrs ya.ru:443 -debug true
 2020/06/30 18:07:38 ya.ru:443 is OK
+
+return code is 0
 ```
 
 ## 2 addresses check
@@ -57,6 +72,8 @@ net-wait-go -addrs ya.ru:443 -debug true
 net-wait-go -addrs ya.ru:443,yandex.ru:443 -debug true
 2020/06/30 18:09:24 yandex.ru:443 is OK
 2020/06/30 18:09:24 ya.ru:443 is OK
+
+return code is 0
 ```
 
 ## 2 addresses check fail
@@ -65,6 +82,7 @@ net-wait-go -addrs ya.ru:445,yandex.ru:445 -debug true
 2020/06/30 18:09:24 yandex.ru:443 is FAILED
 2020/06/30 18:09:24 ya.ru:443 is is FAILED
 ...
+return code is 1
 ```
 
 
