@@ -16,7 +16,7 @@ But also this package can be donwloaded as utility and used from command line.
 
 # Library usage
 
-```
+```GO
 import "github.com/antelman107/net-wait-go/wait"
 
 if !wait.Do(
