@@ -1,7 +1,7 @@
 # What is it?
 Both utility and GO package to wait for port to open (TCP, UDP).
 
-# Why we need it?
+# Why do we need it?
 
 In dockerized applications usually we deploy 
 several containers with the main program container.
