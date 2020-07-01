@@ -48,7 +48,7 @@ if !wait.New(
 net-wait-go
 
   -addrs string
-        address:port
+        address:port(,address:port,address:port,...)
   -deadline uint
         deadline in milliseconds (default 10000)
   -debug
