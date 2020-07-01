@@ -76,11 +76,11 @@ net-wait-go -addrs ya.ru:443,yandex.ru:443 -debug true
 return code is 0
 ```
 
-## 2 service check (fail)
+## 2 services check (fail)
 ```bash
 net-wait-go -addrs ya.ru:445,yandex.ru:445 -debug true
-2020/06/30 18:09:24 yandex.ru:443 is FAILED
-2020/06/30 18:09:24 ya.ru:443 is is FAILED
+2020/06/30 18:09:24 yandex.ru:445 is FAILED
+2020/06/30 18:09:24 ya.ru:445 is is FAILED
 ...
 return code is 1
 ```
