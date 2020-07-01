@@ -45,7 +45,8 @@ if !wait.New(
 # Utility usage
 
 ```bash
-net-wait-go
+$ go get github.com/antelman107/net-wait-go
+$ net-wait-go
 
   -addrs string
         address:port(,address:port,address:port,...)
