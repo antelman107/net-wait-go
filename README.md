@@ -65,7 +65,7 @@ $ net-wait-go
 net-wait-go -addrs ya.ru:443 -debug true
 2020/06/30 18:07:38 ya.ru:443 is OK
 
-return code is 0
+# return code is 0
 ```
 
 ## 2 services check
@@ -74,7 +74,7 @@ net-wait-go -addrs ya.ru:443,yandex.ru:443 -debug true
 2020/06/30 18:09:24 yandex.ru:443 is OK
 2020/06/30 18:09:24 ya.ru:443 is OK
 
-return code is 0
+# return code is 0 (if all services are OK)
 ```
 
 ## 2 services check (fail)
@@ -83,7 +83,7 @@ net-wait-go -addrs ya.ru:445,yandex.ru:445 -debug true
 2020/06/30 18:09:24 yandex.ru:445 is FAILED
 2020/06/30 18:09:24 ya.ru:445 is is FAILED
 ...
-return code is 1
+# return code is 1 (if at least 1 service is failed)
 ```
 
 
