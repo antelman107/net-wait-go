@@ -55,9 +55,13 @@ $ net-wait-go
   -debug
         debug messages toggler
   -delay uint
-        delay in milliseconds (default 100)
+        break between requests in milliseconds (default 50)
+  -packet string
+        UDP packet to be sent
   -proto string
         tcp (default "tcp")
+  -wait uint
+        delay of single request in milliseconds (default 100)
 ```
 
 ## 1 service check
