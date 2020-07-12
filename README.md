@@ -63,6 +63,7 @@ $ net-wait-go
 ## 1 service check
 ```bash
 net-wait-go -addrs ya.ru:443 -debug true
+
 2020/06/30 18:07:38 ya.ru:443 is OK
 
 # return code is 0
@@ -71,6 +72,7 @@ net-wait-go -addrs ya.ru:443 -debug true
 ## 2 services check
 ```bash
 net-wait-go -addrs ya.ru:443,yandex.ru:443 -debug true
+
 2020/06/30 18:09:24 yandex.ru:443 is OK
 2020/06/30 18:09:24 ya.ru:443 is OK
 
@@ -80,10 +82,38 @@ net-wait-go -addrs ya.ru:443,yandex.ru:443 -debug true
 ## 2 services check (fail)
 ```bash
 net-wait-go -addrs ya.ru:445,yandex.ru:445 -debug true
+
 2020/06/30 18:09:24 yandex.ru:445 is FAILED
 2020/06/30 18:09:24 ya.ru:445 is is FAILED
 ...
 # return code is 1 (if at least 1 service is failed)
 ```
 
+# UDP support
+Since UDP as protocol does not provide connection between a server and clients,
+it is not supported in the most of popular
+utilities:
+ - `wait-for-it` issue - https://github.com/vishnubob/wait-for-it/issues/29)
+ - `netcat` (`nc`) has following note in its manual page:
+     ```
+    CAVEATS
+           UDP port scans will always succeed (i.e. report the port as open)
+    ```
+   
+`net-wait-go` provides UDP support, working following way:
+ - sends a meaningful packet to the server
+ - waits for a message back from the server (1 byte at least)
+ 
+## UDP packet example
+Counter Strike game server is accessible via UDP.
+Let's check random Counter Strike server
+ by sending A2S_INFO packet (https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO)
+ 
+```bash
+net-wait-go -proto udp -addrs 46.174.53.245:27015,185.158.113.136:27015 -packet '/////1RTb3VyY2UgRW5naW5lIFF1ZXJ5AA==' -debug true
+ 
+2020/07/12 15:13:25 udp 185.158.113.136:27015 is OK
+2020/07/12 15:13:25 udp 46.174.53.245:27015 is OK
 
+# return code is 0
+```

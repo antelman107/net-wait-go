@@ -8,31 +8,33 @@ import (
 )
 
 type Executor struct {
-	Proto    string
-	Addrs    []string
-	Wait     time.Duration
-	Break    time.Duration
-	Deadline time.Duration
-	Debug    bool
+	Proto     string
+	Wait      time.Duration
+	Break     time.Duration
+	Deadline  time.Duration
+	Debug     bool
+	UDPPacket []byte
 }
 
 type Option func(*Executor)
 
 func New(opts ...Option) *Executor {
 	const (
-		defaultProto    = "tcp"
-		defaultWait     = 200 * time.Millisecond
-		defaultBreak    = 50 * time.Millisecond
-		defaultDeadline = 15 * time.Second
-		defaultDebug    = false
+		defaultProto     = "tcp"
+		defaultWait      = 200 * time.Millisecond
+		defaultBreak     = 50 * time.Millisecond
+		defaultDeadline  = 15 * time.Second
+		defaultDebug     = false
+		defaultUDPPacket = ""
 	)
 
 	e := &Executor{
-		Proto:    defaultProto,
-		Wait:     defaultWait,
-		Break:    defaultBreak,
-		Deadline: defaultDeadline,
-		Debug:    defaultDebug,
+		Proto:     defaultProto,
+		Wait:      defaultWait,
+		Break:     defaultBreak,
+		Deadline:  defaultDeadline,
+		Debug:     defaultDebug,
+		UDPPacket: []byte(defaultUDPPacket),
 	}
 
 	for _, opt := range opts {
@@ -72,6 +74,12 @@ func WithDebug(debug bool) Option {
 	}
 }
 
+func WithUDPPacket(packet []byte) Option {
+	return func(h *Executor) {
+		h.UDPPacket = packet
+	}
+}
+
 func (e *Executor) Do(addrs []string) bool {
 	deadlineCh := time.After(e.Deadline)
 	successCh := make(chan struct{})
@@ -85,26 +93,24 @@ func (e *Executor) Do(addrs []string) bool {
 				defer wg.Done()
 
 				for {
-					conn, err := net.DialTimeout(e.Proto, addr, e.Wait)
-					if err != nil {
+					select {
+					case <-deadlineCh:
+						return
+					default:
+						if e.Proto == "udp" {
+							if !e.doUDP(addr) {
+								continue
+							}
+						} else if !e.doTCP(addr) {
+							continue
+						}
+
 						if e.Debug {
-							log.Printf("%s is FAILED", addr)
+							log.Printf("%s %s is OK", e.Proto, addr)
 						}
 
-						if e.Break > 0 {
-							time.Sleep(e.Break)
-						}
-
-						continue
+						return
 					}
-
-					if e.Debug {
-						log.Printf("%s is OK", addr)
-					}
-
-					_ = conn.Close()
-
-					return
 				}
 			}(addr)
 		}
@@ -118,5 +124,65 @@ func (e *Executor) Do(addrs []string) bool {
 		return false
 	case <-successCh:
 		return true
+	}
+}
+
+func (e *Executor) doTCP(addr string) bool {
+	conn, err := net.DialTimeout(e.Proto, addr, e.Wait)
+	if err != nil {
+		e.processFail(addr)
+
+		return false
+	}
+
+	defer conn.Close()
+
+	return true
+}
+
+func (e *Executor) doUDP(addr string) bool {
+	udpAddr, err := net.ResolveUDPAddr("udp", addr)
+	if err != nil {
+		return false
+	}
+
+	conn, err := net.DialTimeout(e.Proto, udpAddr.String(), e.Wait)
+	if err != nil {
+		e.processFail(addr)
+
+		return false
+	}
+
+	defer conn.Close()
+
+	// If UDP packet is set - send it
+	if len(e.UDPPacket) > 0 {
+		_, err = conn.Write(e.UDPPacket)
+		if err != nil {
+			e.processFail(addr)
+
+			return false
+		}
+	}
+
+	// Wait for at least 1 byte response
+	d := make([]byte, 1)
+	_, err = conn.Read(d)
+	if err != nil {
+		e.processFail(addr)
+
+		return false
+	}
+
+	return true
+}
+
+func (e *Executor) processFail(addr string) {
+	if e.Debug {
+		log.Printf("%s %s is FAILED", e.Proto, addr)
+	}
+
+	if e.Break > 0 {
+		time.Sleep(e.Break)
 	}
 }
