@@ -117,3 +117,5 @@ net-wait-go -proto udp -addrs 46.174.53.245:27015,185.158.113.136:27015 -packet 
 
 # return code is 0
 ```
+
+`-packet` value here is the base64-encoded A2S_INFO packet, which is documented here - https://github.com/wriley/steamserverinfo/blob/master/steamserverinfo.go#L133
