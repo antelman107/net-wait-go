@@ -108,11 +108,34 @@ utilities:
  - sends a meaningful packet to the server
  - waits for a message back from the server (1 byte at least)
  
-## UDP packet example
+## UDP library usage example
 Counter Strike game server is accessible via UDP.
 Let's check random Counter Strike server
  by sending A2S_INFO packet (https://developer.valvesoftware.com/wiki/Server_queries#A2S_INFO)
- 
+
+ ```go
+e := New(
+      WithProto("udp"),
+      WithUDPPacket([]byte{
+            0xFF, 0xFF, 0xFF, 0xFF, 0x54, 0x53, 
+            0x6F, 0x75, 0x72, 0x63, 0x65, 0x20, 
+            0x45, 0x6E, 0x67, 0x69, 0x6E, 0x65, 
+            0x20, 0x51, 0x75, 0x65, 0x72, 0x79, 
+            0x00}),
+      WithDebug(true),
+      WithDeadline(time.Second*2),
+)
+if !e.Do([]string{"46.174.53.245:27015","185.158.113.136:27015"}) {
+      logger.Error("udp services are not available")
+      return
+}
+```
+
+`WithUDPPacket` value here is the base64-encoded A2S_INFO packet, which is documented here - https://github.com/wriley/steamserverinfo/blob/master/steamserverinfo.go#L133
+
+
+## UDP utility usage example 
+
 ```bash
 net-wait-go -proto udp -addrs 46.174.53.245:27015,185.158.113.136:27015 -packet '/////1RTb3VyY2UgRW5naW5lIFF1ZXJ5AA==' -debug true
  
@@ -122,4 +145,11 @@ net-wait-go -proto udp -addrs 46.174.53.245:27015,185.158.113.136:27015 -packet 
 # return code is 0
 ```
 
-`-packet` value here is the base64-encoded A2S_INFO packet, which is documented here - https://github.com/wriley/steamserverinfo/blob/master/steamserverinfo.go#L133
+`-packet` value here is the base64-encoded A2S_INFO packet (see above). Since it is problematic to pass
+binary value in command line, base64 encoding for 
+`packet` parameter is chosen.
+
+
+
+
+
