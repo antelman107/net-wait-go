@@ -1,3 +1,5 @@
+![alt text](https://github.com/antelman107/net-wait-go/blob/master/tube.svg?raw=true)
+
 # What is it?
 Both utility and GO package to wait for port to open (TCP, UDP).
 
@@ -128,7 +130,7 @@ e := wait.New(
 if !e.Do([]string{"46.174.53.245:27015","185.158.113.136:27015"}) {
       logger.Error("udp services are not available")
       return
-}
+} 
 ```
 
 `WithUDPPacket` value here is the base64-encoded A2S_INFO packet, which is documented here - https://github.com/wriley/steamserverinfo/blob/master/steamserverinfo.go#L133
