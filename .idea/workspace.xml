@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cb87018d-7ec0-407a-840d-f17c7e5d6b96" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.14/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="xu6u3209" />
+  </component>
+  <component name="ProjectId" id="1eaExoeKczF779eGcr98bxeBTGp" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="GO_FMT" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+  </component>
+  <component name="RunManager" selected="Go Test.Test_getFlags in github.com/antelman107/net-wait-go">
+    <configuration name="UDP" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="net-wait-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <parameters value=" -proto udp -addrs 46.174.53.245:27015 -packet '/////1RTb3VyY2UgRW5naW5lIFF1ZXJ5AA==' -debug true" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <package value="github.com/antelman107/net-wait-go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="udp" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true">
+      <module name="net-wait-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <parameters value=" -proto udp -addrs 46.174.53.245:27015 -packet '/////1RTb3VyY2UgRW5naW5lIFF1ZXJ5AA==' -debug true" />
+      <kind value="PACKAGE" />
+      <package value="github.com/antelman107/net-wait-go" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestDO in github.com/antelman107/net-wait-go/wait" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="net-wait-go" />
+      <working_directory value="$PROJECT_DIR$/wait" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/antelman107/net-wait-go/wait" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^TestDO$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test_getFlags in github.com/antelman107/net-wait-go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="net-wait-go" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/antelman107/net-wait-go" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <pattern value="^Test_getFlags$" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Go Build.UDP" />
+      <item itemvalue="Go Build.udp" />
+      <item itemvalue="Go Test.TestDO in github.com/antelman107/net-wait-go/wait" />
+      <item itemvalue="Go Test.Test_getFlags in github.com/antelman107/net-wait-go" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.Test_getFlags in github.com/antelman107/net-wait-go" />
+        <item itemvalue="Go Test.TestDO in github.com/antelman107/net-wait-go/wait" />
+        <item itemvalue="Go Build.udp" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="UDP support/documentation, more tests" />
+    <MESSAGE value="CLI refactoring+tests, Makefile, Usage update" />
+    <option name="LAST_COMMIT_MESSAGE" value="CLI refactoring+tests, Makefile, Usage update" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="520" y="262" key="#Go_Modules" timestamp="1594551582171">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="520" y="262" key="#Go_Modules/0.23.1440.798@0.23.1440.798" timestamp="1594551582171" />
+    <state x="184" y="83" width="1071" height="726" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594555564042">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="184" y="83" width="1071" height="726" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.798@0.23.1440.798" timestamp="1594555564042" />
+    <state x="173" y="23" key="CommitChangelistDialog2" timestamp="1594574689798">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="173" y="23" key="CommitChangelistDialog2/0.23.1440.798@0.23.1440.798" timestamp="1594574689798" />
+    <state x="100" y="123" width="1240" height="597" key="DiffContextDialog" timestamp="1594574810855">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="100" y="123" width="1240" height="597" key="DiffContextDialog/0.23.1440.798@0.23.1440.798" timestamp="1594574810855" />
+    <state x="331" y="204" key="EditFileWatcherDialog" timestamp="1594551808198">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="331" y="204" key="EditFileWatcherDialog/0.23.1440.798@0.23.1440.798" timestamp="1594551808198" />
+    <state width="1398" height="204" key="GridCell.Tab.0.bottom" timestamp="1594575124545">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1398" height="204" key="GridCell.Tab.0.bottom/0.23.1440.798@0.23.1440.798" timestamp="1594575124545" />
+    <state width="1398" height="204" key="GridCell.Tab.0.center" timestamp="1594575124545">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1398" height="204" key="GridCell.Tab.0.center/0.23.1440.798@0.23.1440.798" timestamp="1594575124545" />
+    <state width="1398" height="204" key="GridCell.Tab.0.left" timestamp="1594575124545">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1398" height="204" key="GridCell.Tab.0.left/0.23.1440.798@0.23.1440.798" timestamp="1594575124545" />
+    <state width="1398" height="204" key="GridCell.Tab.0.right" timestamp="1594575124545">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1398" height="204" key="GridCell.Tab.0.right/0.23.1440.798@0.23.1440.798" timestamp="1594575124545" />
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1594575124542">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.23.1440.798@0.23.1440.798" timestamp="1594575124542" />
+    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1594575124542">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.center/0.23.1440.798@0.23.1440.798" timestamp="1594575124542" />
+    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1594575124541">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.left/0.23.1440.798@0.23.1440.798" timestamp="1594575124541" />
+    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1594575124542">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1398" height="254" key="GridCell.Tab.1.right/0.23.1440.798@0.23.1440.798" timestamp="1594575124542" />
+    <state x="251" y="60" key="SettingsEditor" timestamp="1594551810203">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="251" y="60" key="SettingsEditor/0.23.1440.798@0.23.1440.798" timestamp="1594551810203" />
+    <state x="320" y="161" key="Vcs.Push.Dialog.v2" timestamp="1594574691321">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="320" y="161" key="Vcs.Push.Dialog.v2/0.23.1440.798@0.23.1440.798" timestamp="1594574691321" />
+    <state width="1211" height="513" key="XDebugger.FullValuePopup" timestamp="1594555005005">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state width="1211" height="513" key="XDebugger.FullValuePopup/0.23.1440.798@0.23.1440.798" timestamp="1594555005005" />
+    <state x="484" y="341" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594571559187">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="484" y="341" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.798@0.23.1440.798" timestamp="1594571559187" />
+    <state x="401" y="170" width="648" height="502" key="find.popup" timestamp="1594556924552">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="401" y="170" width="648" height="502" key="find.popup/0.23.1440.798@0.23.1440.798" timestamp="1594556924552" />
+    <state x="385" y="145" width="670" height="676" key="search.everywhere.popup" timestamp="1594574326664">
+      <screen x="0" y="23" width="1440" height="798" />
+    </state>
+    <state x="385" y="145" width="670" height="676" key="search.everywhere.popup/0.23.1440.798@0.23.1440.798" timestamp="1594574326664" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/wait/wait.go</url>
+          <line>163</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/wait/wait.go</url>
+          <line>152</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/wait/wait_test.go</url>
+          <line>21</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/cli.go</url>
+          <line>42</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

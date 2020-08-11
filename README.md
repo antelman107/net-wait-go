@@ -1,4 +1,4 @@
-![alt text](https://github.com/antelman107/net-wait-go/blob/master/tube.svg?raw=true)
+![alt text](https://github.com/antelman107/net-wait-go/blob/master/tube2.svg?raw=true)
 
 # What is it?
 Both utility and GO package to wait for port to open (TCP, UDP).
