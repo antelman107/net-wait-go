@@ -1,6 +1,7 @@
 package wait
 
 import (
+	"context"
 	"io"
 	"net"
 	"strings"
@@ -67,13 +68,16 @@ func getUDPServer(proto, addr string, t *testing.T) io.Closer {
 }
 
 func TestDO(t *testing.T) {
+	ctx := context.Background()
+
 	type data struct {
-		name    string
-		addr    string
-		reqAddr string
-		proto   string
-		packet  string
-		result  bool
+		name          string
+		addr          string
+		reqAddr       string
+		proto         string
+		packet        string
+		result        bool
+		contextCancel bool
 	}
 
 	for _, row := range []data{
@@ -107,6 +111,15 @@ func TestDO(t *testing.T) {
 			packet:  "1",
 			result:  false,
 		},
+		{
+			name:          "context cancel",
+			addr:          "localhost:6433",
+			reqAddr:       "localhost:6433",
+			proto:         "udp",
+			packet:        "1",
+			result:        false,
+			contextCancel: true,
+		},
 	} {
 		r := row
 		t.Run(row.name, func(t *testing.T) {
@@ -118,12 +131,21 @@ func TestDO(t *testing.T) {
 			}
 			defer srv.Close()
 
+			ctx, cancel := context.WithCancel(ctx)
+			defer cancel()
+
+			if row.contextCancel {
+				cancel()
+			}
+
 			e := New(
 				WithProto(r.proto),
 				WithUDPPacket([]byte(r.packet)),
 				WithDebug(false),
 				WithDeadline(time.Second*2),
+				WithContext(ctx),
 			)
+
 			if e.Do([]string{r.reqAddr}) != r.result {
 				t.Errorf("%s result is not %#v", r.name, r.result)
 			}
