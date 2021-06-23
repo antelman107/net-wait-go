@@ -1,6 +1,7 @@
 package wait
 
 import (
+	"context"
 	"log"
 	"net"
 	"sync"
@@ -14,6 +15,7 @@ type Executor struct {
 	Deadline  time.Duration
 	Debug     bool
 	UDPPacket []byte
+	Context   context.Context
 }
 
 type Option func(*Executor)
@@ -35,6 +37,7 @@ func New(opts ...Option) *Executor {
 		Deadline:  defaultDeadline,
 		Debug:     defaultDebug,
 		UDPPacket: []byte(defaultUDPPacket),
+		Context:   context.Background(),
 	}
 
 	for _, opt := range opts {
@@ -50,6 +53,11 @@ func WithProto(proto string) Option {
 	}
 }
 
+func WithContext(ctx context.Context) Option {
+	return func(h *Executor) {
+		h.Context = ctx
+	}
+}
 func WithWait(wait time.Duration) Option {
 	return func(h *Executor) {
 		h.Wait = wait
@@ -96,6 +104,8 @@ func (e *Executor) Do(addrs []string) bool {
 					select {
 					case <-deadlineCh:
 						return
+					case <-e.Context.Done():
+						return
 					default:
 						if e.Proto == "udp" {
 							if !e.doUDP(addr) {
@@ -120,6 +130,8 @@ func (e *Executor) Do(addrs []string) bool {
 	}()
 
 	select {
+	case <-e.Context.Done():
+		return false
 	case <-deadlineCh:
 		return false
 	case <-successCh:
